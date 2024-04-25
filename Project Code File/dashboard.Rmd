@@ -1,0 +1,46 @@
+title: "My First Dashboard"
+output:
+flexdashboard::flex_dashboard:
+orientation: rows
+vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(rmarkdown)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### (Box Plot)IRIS
+
+```{r}
+ggplotly(ggplot(iris)+aes(x=Species,y=Sepal.Length)+
+geom_boxplot()+theme_classic())
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Histogram
+
+```{r}
+ggplot(data=iris, aes(x=Sepal.Length))+
+labs(x="Sepal",y="Frequecy of Sepal Length")+
+geom_histogram(bins=10, fill="red", col="black")+
+ggtitle("Histogram")
+
+```
+
+### Surface
+
+```{r}
+
+plot_ly(z = volcano, type = "surface")
+
+```
